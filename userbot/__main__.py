@@ -42,7 +42,7 @@ else:
         LOGS.error(f"TG_BOT_TOKEN - {str(e)}")
         sys.exit()
 
-path = "userbot/plugins/*.py"
+path = "userbot/*.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as f:
@@ -52,9 +52,9 @@ for name in files:
             if shortname.replace(".py", "") not in Config.NO_LOAD:
                 load_module(shortname.replace(".py", ""))
             else:
-                os.remove(Path(f"userbot/plugins/{shortname}.py"))
+                os.remove(Path(f"userbot/{shortname}.py"))
         except Exception as e:
-            os.remove(Path(f"userbot/plugins/{shortname}.py"))
+            os.remove(Path(f"userbot/{shortname}.py"))
             LOGS.info(f"unable to load {shortname} because of error {e}")
 
 LOGS.info("Yay your userbot is officially working.!!!")
